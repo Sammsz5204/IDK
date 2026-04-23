@@ -739,13 +739,13 @@ const CONFIG = {
       title:  'Ai No Uta',
       artist: 'Hatsune Miku',
       art:    'AiNoUta.webp',
-      src:    'AiNoUta-HatsuneMiku.mp3',
+      src:    'https://raw.githubusercontent.com/Sammsz5204/IDK/main/AiNoUta-HatsuneMiku.mp3',
     },
     {
       title:  'The World Is Mine',
       artist: 'Hatsune Miku',
       art:    'TheWorldIsMine.webp',
-      src:    'TheWorldIsMine-HatsuneMiku.mp3',
+      src:    'https://raw.githubusercontent.com/Sammsz5204/IDK/main/TheWorldIsMine-HatsuneMiku.mp3',
     },
     // Para adicionar mais músicas, suba o .mp3 e o .webp no seu repo e siga o padrão acima, se lembra pls
   ],
@@ -865,15 +865,6 @@ const volSlider    = document.getElementById('volumeSlider');
 
 let currentIndex = 0;
 let isPlaying    = false;
-
-  btnPlay.addEventListener("click", () => {
-  if (isPlaying) {
-    audio.pause();
-  } else {
-    audio.play();
-  }
-  isPlaying = !isPlaying;
-});
   
 function fmt(s) {
   const m = Math.floor(s / 60);
