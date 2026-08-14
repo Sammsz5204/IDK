@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
-  
     :root {
       /* Cores */
       --red-deep:    #1a0000;
@@ -140,11 +139,6 @@
         var(--red-mid),
         var(--red-accent)
       );
-      
-    }
-
-    @keyframes rotateBorder {
-      to { transform: rotate(360deg); }
     }
 
     .avatar-img {
@@ -256,15 +250,6 @@
       text-overflow: ellipsis;
     }
 
-    /* Spotify activity */
-    .spotify-art {
-      width: 46px;
-      height: 46px;
-      border-radius: 6px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
     /* Redes sociais */
     .socials {
       display: flex;
@@ -312,290 +297,9 @@
 
     .views svg { width: 13px; height: 13px; fill: currentColor; opacity: 0.6; }
 
-    /* ============ MUSIC PLAYER ============ */
-    .music-player {
-      width: 100%;
-      max-width: 440px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 0 60px rgba(192,57,43,0.1), 0 20px 60px rgba(0,0,0,0.4);
-      overflow: hidden;
-      animation: cardIn 0.7s 0.15s cubic-bezier(0.34,1.56,0.64,1) both;
-    }
-
-    .player-main {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 16px;
-    }
-
-    .track-art-wrap {
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .track-art {
-      width: 54px;
-      height: 54px;
-      border-radius: 10px;
-      object-fit: cover;
-      background: var(--red-mid);
-      display: block;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
-    }
-
-    .player-main:hover .track-art { transform: scale(1.05); }
-
-    .track-info { flex: 1; min-width: 0; }
-
-    .track-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-main);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .track-artist {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-family: 'Space Mono', monospace;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-top: 2px;
-    }
-
-    /* Progress */
-    .player-progress {
-      padding: 0 16px 4px;
-    }
-
-    .progress-times {
-      display: flex;
-      justify-content: space-between;
-      font-size: 10px;
-      font-family: 'Space Mono', monospace;
-      color: var(--text-faint);
-      margin-bottom: 5px;
-    }
-
-    .progress-bar {
-      position: relative;
-      height: 4px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 4px;
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--red-bright), var(--red-accent));
-      border-radius: 4px;
-      transition: width 0.5s linear;
-      box-shadow: 0 0 10px rgba(192,57,43,0.5);
-    }
-
-    .progress-bar::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: var(--thumb-pos, 0%);
-      width: 12px;
-      height: 12px;
-      background: var(--text-main);
-      border-radius: 50%;
-      box-shadow: 0 0 8px rgba(0,0,0,0.5);
-      opacity: 0;
-      transition: opacity 0.2s, left 0.5s linear;
-      margin-left: -6px;
-      pointer-events: none;
-    }
-
-    .progress-bar:hover::after { opacity: 1; }
-
-    /* Controles */
-    .player-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 16px 14px;
-    }
-
-    .ctrl-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .ctrl-btn:hover { color: var(--text-main); transform: scale(1.15); }
-    .ctrl-btn svg   { width: 16px; height: 16px; fill: currentColor; }
-
-    .ctrl-btn.play-pause {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(135deg, var(--red-bright), var(--red-accent));
-      color: #fff;
-      box-shadow: 0 4px 16px rgba(192,57,43,0.4);
-    }
-
-    .ctrl-btn.play-pause:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 24px rgba(192,57,43,0.6);
-    }
-
-    .ctrl-btn.play-pause svg { width: 18px; height: 18px; }
-
-    /* Volume */
-    .volume-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0 16px 14px;
-    }
-
-    .volume-icon { color: var(--text-faint); flex-shrink: 0; }
-    .volume-icon svg { width: 14px; height: 14px; fill: currentColor; }
-
-    .volume-slider {
-      flex: 1;
-      -webkit-appearance: none;
-      appearance: none;
-      height: 3px;
-      border-radius: 3px;
-      background: rgba(255,255,255,0.08);
-      outline: none;
-      cursor: pointer;
-    }
-
-    .volume-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--red-accent);
-      cursor: pointer;
-      box-shadow: 0 0 6px rgba(192,57,43,0.5);
-    }
-
-    /* Playlist */
-    .playlist {
-      border-top: 1px solid rgba(192,57,43,0.12);
-      max-height: 200px;
-      overflow-y: auto;
-    }
-
-    .playlist::-webkit-scrollbar { width: 4px; }
-    .playlist::-webkit-scrollbar-track { background: transparent; }
-    .playlist::-webkit-scrollbar-thumb { background: var(--red-mid); border-radius: 4px; }
-
-    .playlist-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 16px;
-      cursor: pointer;
-      transition: background 0.2s ease;
-      border-bottom: 1px solid rgba(255,255,255,0.03);
-    }
-
-    .playlist-item:hover { background: rgba(192,57,43,0.1); }
-    .playlist-item.active { background: rgba(192,57,43,0.15); }
-
-    .pl-num {
-      font-size: 11px;
-      font-family: 'Space Mono', monospace;
-      color: var(--text-faint);
-      width: 16px;
-      text-align: center;
-      flex-shrink: 0;
-    }
-
-    .playlist-item.active .pl-num { color: var(--red-accent); }
-
-    .pl-art {
-      width: 34px;
-      height: 34px;
-      border-radius: 6px;
-      object-fit: cover;
-      background: var(--red-mid);
-      flex-shrink: 0;
-    }
-
-    .pl-info { flex: 1; min-width: 0; }
-
-    .pl-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-main);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .playlist-item.active .pl-title { color: var(--red-accent); }
-
-    .pl-artist {
-      font-size: 10px;
-      color: var(--text-muted);
-      font-family: 'Space Mono', monospace;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .pl-dur {
-      font-size: 10px;
-      font-family: 'Space Mono', monospace;
-      color: var(--text-faint);
-      flex-shrink: 0;
-    }
-
-    /* Loader */
-    .loader {
-      display: flex;
-      gap: 5px;
-      justify-content: center;
-      padding: 4px 0;
-    }
-
-    .loader span {
-      width: 4px;
-      height: 14px;
-      background: var(--red-accent);
-      border-radius: 3px;
-      animation: equalize 0.8s ease-in-out infinite alternate;
-    }
-
-    .loader span:nth-child(2) { animation-delay: 0.15s; height: 8px; }
-    .loader span:nth-child(3) { animation-delay: 0.3s;  height: 18px; }
-    .loader span:nth-child(4) { animation-delay: 0.45s; height: 10px; }
-
-    @keyframes equalize {
-      from { transform: scaleY(0.4); }
-      to   { transform: scaleY(1.2); }
-    }
-
     /* Responsive */
     @media (max-width: 480px) {
-      .profile-card, .music-player { border-radius: 16px; }
+      .profile-card { border-radius: 16px; }
       .card-body { padding: 52px 20px 20px; }
     }
   </style>
@@ -658,96 +362,23 @@
     </div>
   </div>
 
-  <!-- ====== MUSIC PLAYER ====== -->
-  <div class="music-player">
-    <div class="player-main">
-      <div class="track-art-wrap">
-        <img class="track-art" id="trackArt" src="" alt="capa" />
-      </div>
-      <div class="track-info">
-        <div class="track-title"  id="trackTitle">—</div>
-        <div class="track-artist" id="trackArtist">—</div>
-      </div>
-      <!-- Equalizer animado quando tocando -->
-      <div class="loader" id="eqLoader" style="display:none">
-        <span></span><span></span><span></span><span></span>
-      </div>
-    </div>
-
-    <div class="player-progress">
-      <div class="progress-times">
-        <span id="timeElapsed">0:00</span>
-        <span id="timeDuration">0:00</span>
-      </div>
-      <div class="progress-bar" id="progressBar">
-        <div class="progress-fill" id="progressFill" style="width:0%"></div>
-      </div>
-    </div>
-
-    <div class="player-controls">
-      <button class="ctrl-btn" id="btnPrev" title="Anterior">
-        <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6V6zm3.5 6 8.5 6V6l-8.5 6z"/></svg>
-      </button>
-      <button class="ctrl-btn play-pause" id="btnPlay" title="Play/Pause">
-        <!-- Ícone de play por padrão; JS troca para pause -->
-        <svg id="iconPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        <svg id="iconPause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-      </button>
-      <button class="ctrl-btn" id="btnNext" title="Próximo">
-        <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
-      </button>
-    </div>
-
-    <div class="volume-row">
-      <div class="volume-icon">
-        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-      </div>
-      <input class="volume-slider" type="range" id="volumeSlider" min="0" max="100" value="70" />
-    </div>
-
-    <!-- Playlist -->
-    <div class="playlist" id="playlist"></div>
-  </div>
-
 </div>
-
-<audio id="audioEl"></audio>
 
 <script>
 /* =====================================================
-   ► CONFIGURAÇÃO — EDITE AQUI EU DO FUTURO
+   ► CONFIGURAÇÃO
    ===================================================== */
 
 const CONFIG = {
   // Seu ID do Discord
   discordId: '722221048954748938',
 
-  // Nome e bio exibidos (também sobrescritos pelo Lanyard se quiser)
+  // Nome e bio exibidos
   name: 'Saamm',
   bio: 'I did it <3',
 
   // ► AVATAR
-
   avatar: 'Akame.gif',
-
-  // ► PLAYLIST
-  
-  // art: URL raw do .webp da capa
-  // src: URL raw do .mp3
-  tracks: [
-    {
-      title:  'Ai No Uta',
-      artist: 'Hatsune Miku',
-      art:    'https://raw.githubusercontent.com/Sammsz5204/IDK/main/AiNoUta.webp',
-      src:    'https://raw.githubusercontent.com/Sammsz5204/IDK/main/AiNoUtaHatsuneMiku.mp3',
-    },
-    {
-      title:  'The World Is Mine',
-      artist: 'Hatsune Miku',
-      art:    'https://raw.githubusercontent.com/Sammsz5204/IDK/main/TheWorldIsMine.webp',
-      src:    'https://raw.githubusercontent.com/Sammsz5204/IDK/main/TheWorldIsMineHatsuneMiku.mp3',
-    },
-  ],
 };
 
 /* =====================================================
@@ -769,13 +400,11 @@ function connectLanyard() {
   ws.addEventListener('message', ({ data }) => {
     const { op, d } = JSON.parse(data);
 
-    // op 1: Hello — inicia heartbeat e subscribe
     if (op === 1) {
       wsHeartbeat = setInterval(() => ws.send(JSON.stringify({ op: 3 })), d.heartbeat_interval);
       ws.send(JSON.stringify({ op: 2, d: { subscribe_to_id: CONFIG.discordId } }));
     }
 
-    // op 0: Event (INIT_STATE ou PRESENCE_UPDATE)
     if (op === 0) updatePresence(d);
   });
 
@@ -792,27 +421,22 @@ function updatePresence(data) {
   const p = data.discord_user || data;
   const status = data.discord_status || 'offline';
 
-  // Avatar do Discord (usa o do CONFIG se preferir seu gif customizado)
   const avatarHash = p.avatar;
   const discordAvatar = avatarHash
     ? `https://cdn.discordapp.com/avatars/${p.id}/${avatarHash}.${avatarHash.startsWith('a_') ? 'gif' : 'png'}?size=256`
     : null;
 
-  // Usa avatar customizado do CONFIG, senão pega do Discord
   document.getElementById('avatarImg').src = CONFIG.avatar !== 'https://cdn.discordapp.com/embed/avatars/0.png'
     ? CONFIG.avatar
     : (discordAvatar || CONFIG.avatar);
 
-  // Status dot
   const dot = document.getElementById('statusDot');
   dot.className = 'status-dot ' + (status === 'online' ? '' : status);
 
-  // Bio (custom status do Discord)
   const customStatus = data.activities?.find(a => a.type === 4);
   document.getElementById('profileBio').textContent =
     (customStatus?.state || CONFIG.bio);
 
-  // Atividade (Spotify ou outro app)
   const spotify  = data.spotify;
   const activity = data.activities?.find(a => a.type !== 4);
 
@@ -845,139 +469,10 @@ function updatePresence(data) {
 
 connectLanyard();
 
-/* =====================================================
-   ► PLAYER DE MÚSICAS
-   ===================================================== */
-
-const audio      = document.getElementById('audioEl');
-const btnPlay    = document.getElementById('btnPlay');
-const btnPrev    = document.getElementById('btnPrev');
-const btnNext    = document.getElementById('btnNext');
-const iconPlay   = document.getElementById('iconPlay');
-const iconPause  = document.getElementById('iconPause');
-const progressFill = document.getElementById('progressFill');
-const progressBar  = document.getElementById('progressBar');
-const timeElapsed  = document.getElementById('timeElapsed');
-const timeDuration = document.getElementById('timeDuration');
-const eqLoader     = document.getElementById('eqLoader');
-const volSlider    = document.getElementById('volumeSlider');
-
-let currentIndex = 0;
-let isPlaying    = false;
-  
-function fmt(s) {
-  const m = Math.floor(s / 60);
-  const ss = String(Math.floor(s % 60)).padStart(2, '0');
-  return `${m}:${ss}`;
-}
-
-function loadTrack(index, autoPlay = false) {
-  const t = CONFIG.tracks[index];
-  if (!t) return;
-
-  document.getElementById('trackTitle').textContent  = t.title;
-  document.getElementById('trackArtist').textContent = t.artist;
-  document.getElementById('trackArt').src            = t.art;
-
-  audio.src    = t.src;
-  audio.volume = volSlider.value / 100;
-
-  progressFill.style.width = '0%';
-  timeElapsed.textContent  = '0:00';
-  timeDuration.textContent = '0:00';
-  progressBar.style.setProperty('--thumb-pos', '0%');
-
-  renderPlaylist();
-  if (autoPlay) playTrack();
-}
-
-function playTrack() {
-  audio.play().catch(console.warn);
-}
-
-function pauseTrack() {
-  audio.pause();
-}
-
-function setPlaying(state) {
-  isPlaying = state;
-  iconPlay.style.display  = state ? 'none' : 'block';
-  iconPause.style.display = state ? 'block' : 'none';
-  eqLoader.style.display  = state ? 'flex' : 'none';
-}
-
-btnPlay.addEventListener('click', () => {
-  if (isPlaying) pauseTrack(); else playTrack();
-});
-
-btnPrev.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + CONFIG.tracks.length) % CONFIG.tracks.length;
-  loadTrack(currentIndex, isPlaying);
-});
-
-btnNext.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % CONFIG.tracks.length;
-  loadTrack(currentIndex, isPlaying);
-});
-
-audio.addEventListener('play',  () => setPlaying(true));
-audio.addEventListener('pause', () => setPlaying(false));
-audio.addEventListener('ended', () => {
-  currentIndex = (currentIndex + 1) % CONFIG.tracks.length;
-  loadTrack(currentIndex, true);
-});
-
-audio.addEventListener('timeupdate', () => {
-  if (!audio.duration) return;
-  const pct = (audio.currentTime / audio.duration) * 100;
-  progressFill.style.width = pct + '%';
-  progressBar.style.setProperty('--thumb-pos', pct + '%');
-  timeElapsed.textContent  = fmt(audio.currentTime);
-  timeDuration.textContent = fmt(audio.duration);
-});
-
-progressBar.addEventListener('click', e => {
-  const rect = progressBar.getBoundingClientRect();
-  const pct  = (e.clientX - rect.left) / rect.width;
-  audio.currentTime = pct * audio.duration;
-});
-
-volSlider.addEventListener('input', () => {
-  audio.volume = volSlider.value / 100;
-});
-
-/* Playlist */
-function renderPlaylist() {
-  const el = document.getElementById('playlist');
-  el.innerHTML = CONFIG.tracks.map((t, i) => `
-    <div class="playlist-item ${i === currentIndex ? 'active' : ''}" data-index="${i}">
-      <span class="pl-num">${i + 1}</span>
-      <img class="pl-art" src="${t.art}" alt="">
-      <div class="pl-info">
-        <div class="pl-title">${t.title}</div>
-        <div class="pl-artist">${t.artist}</div>
-      </div>
-    </div>
-  `).join('');
-
-  el.querySelectorAll('.playlist-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const idx = +item.dataset.index;
-      if (idx === currentIndex) {
-        if (isPlaying) pauseTrack(); else playTrack();
-      } else {
-        currentIndex = idx;
-        loadTrack(idx, true);
-      }
-    });
-  });
-}
-
 // Init
 document.getElementById('profileName').textContent = CONFIG.name;
 document.getElementById('profileBio').textContent  = CONFIG.bio;
 document.getElementById('avatarImg').src            = CONFIG.avatar;
-loadTrack(0);
 </script>
 </body>
 </html>
